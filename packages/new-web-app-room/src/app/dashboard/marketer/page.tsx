@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Users, Home, DollarSign, Calendar, TrendingUp, Eye } from 'lucide-react';
+import { Users, Home, DollarSign, Calendar } from 'lucide-react';
 
 export default function MarketerDashboard() {
   const [stats] = useState({
@@ -155,3 +155,4 @@ export default function MarketerDashboard() {
     </div>
   );
 }
+

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 export default function EscrowSystem({ rentalId, userRole }) {
   const [escrowDetails, setEscrowDetails] = useState(null);
@@ -7,9 +7,9 @@ export default function EscrowSystem({ rentalId, userRole }) {
 
   useEffect(() => {
     fetchEscrowDetails();
-  }, [rentalId]);
+  }, [rentalId, fetchEscrowDetails]);
 
-  const fetchEscrowDetails = async () => {
+  const fetchEscrowDetails = useCallback(async () => {
     try {
       const response = await fetch(`/api/escrow/${rentalId}`);
       const data = await response.json();
@@ -17,7 +17,7 @@ export default function EscrowSystem({ rentalId, userRole }) {
     } catch (error) {
       console.error('Error fetching escrow details:', error);
     }
-  };
+  }, [rentalId]);
 
   const submitInspectionReport = async (damageFound) => {
     setLoading(true);
@@ -43,25 +43,7 @@ export default function EscrowSystem({ rentalId, userRole }) {
     setLoading(false);
   };
 
-  const releaseEscrow = async (releaseTo) => {
-    setLoading(true);
-    try {
-      const response = await fetch(`/api/escrow/${rentalId}/release`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ releaseTo })
-      });
-
-      if (response.ok) {
-        alert(`Escrow funds released to ${releaseTo}`);
-        fetchEscrowDetails();
-      }
-    } catch (error) {
-      console.error('Error releasing escrow:', error);
-      alert('Error releasing escrow funds');
-    }
-    setLoading(false);
-  };
+  // Escrow release is handled through the inspection report submission
 
   if (!escrowDetails) {
     return <div className="p-4">Loading escrow details...</div>;
@@ -160,3 +142,9 @@ export default function EscrowSystem({ rentalId, userRole }) {
     </div>
   );
 }
+
+
+
+
+
+

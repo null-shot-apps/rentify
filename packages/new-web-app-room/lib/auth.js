@@ -32,7 +32,7 @@ export const generateToken = (user) => {
 export const verifyToken = (token) => {
   try {
     return jwt.verify(token, JWT_SECRET);
-  } catch (error) {
+  } catch {
     return null;
   }
 };
@@ -209,7 +209,7 @@ export const validatePassword = (password) => {
   };
 };
 
-export default {
+const authUtils = {
   hashPassword,
   verifyPassword,
   generateToken,
@@ -225,3 +225,7 @@ export default {
   validateEmail,
   validatePassword
 };
+
+export default authUtils;
+
+

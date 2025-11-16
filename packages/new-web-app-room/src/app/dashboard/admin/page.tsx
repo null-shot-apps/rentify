@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { CheckCircle, XCircle, Clock, AlertTriangle, Users, Home, DollarSign } from 'lucide-react';
+import { CheckCircle, XCircle, Clock, AlertTriangle, Users, Home } from 'lucide-react';
 
 export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState('overview');
@@ -226,3 +226,4 @@ export default function AdminDashboard() {
     </div>
   );
 }
+

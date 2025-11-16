@@ -228,8 +228,9 @@ export const formatNaira = (amount) => {
 };
 
 // Webhook signature verification
+import crypto from 'crypto';
+
 export const verifyWebhookSignature = (payload, signature) => {
-  const crypto = require('crypto');
   const hash = crypto
     .createHmac('sha512', PAYSTACK_SECRET_KEY)
     .update(JSON.stringify(payload))
@@ -301,7 +302,7 @@ export const EscrowManager = {
       });
 
       return transfer;
-    } catch (error) {
+    } catch {
       return {
         success: false,
         error: 'Failed to release caution fee to tenant'
@@ -331,7 +332,7 @@ export const EscrowManager = {
       });
 
       return transfer;
-    } catch (error) {
+    } catch {
       return {
         success: false,
         error: 'Failed to release caution fee to landlord'
@@ -340,7 +341,7 @@ export const EscrowManager = {
   }
 };
 
-export default {
+const paystackUtils = {
   initializePayment,
   verifyPayment,
   createTransferRecipient,
@@ -355,3 +356,9 @@ export default {
   EscrowManager,
   PAYSTACK_PUBLIC_KEY
 };
+
+export default paystackUtils;
+
+
+
+

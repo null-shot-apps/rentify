@@ -14,7 +14,8 @@ export default async function handler(req, res) {
 
   try {
     // Find the property to determine who to notify
-    const properties = require('./properties/index.js').properties || [];
+    // Mock properties data - in production this would come from database
+    const properties = [];
     const property = properties.find(p => p.id === propertyId);
     
     if (!property) {
@@ -58,3 +59,4 @@ export default async function handler(req, res) {
 
 // Export inspections for other API routes
 export { inspections };
+

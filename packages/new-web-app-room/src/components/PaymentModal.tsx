@@ -93,7 +93,7 @@ export default function PaymentModal({ isOpen, onClose, property, onPaymentSucce
               <Info className="h-5 w-5 text-blue-600 mt-0.5 mr-2" />
               <div className="text-sm text-blue-800">
                 <p className="font-medium mb-1">About Caution Fee</p>
-                <p>Your caution fee is held in escrow and will be refunded after your lease ends, provided there's no property damage.</p>
+                <p>Your caution fee is held in escrow and will be refunded after your lease ends, provided there&apos;s no property damage.</p>
               </div>
             </div>
           </div>
@@ -173,3 +173,4 @@ export default function PaymentModal({ isOpen, onClose, property, onPaymentSucce
     </div>
   );
 }
+

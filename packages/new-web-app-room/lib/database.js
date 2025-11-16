@@ -348,4 +348,7 @@ export const RentalModel = {
   }
 };
 
-export default { db, UserModel, PropertyModel, RentalModel, createTables };
+const database = { db, UserModel, PropertyModel, RentalModel, createTables };
+
+export default database;
+
